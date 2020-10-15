@@ -4,6 +4,7 @@ import { Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setChat } from "../../../../features/chatSlice";
 import dbs from "../../../../Firebase/firebase";
+import moment from "moment";
 
 function SidebarChat({ id, chatName }) {
   const dispatch = useDispatch();
@@ -36,7 +37,10 @@ function SidebarChat({ id, chatName }) {
         <h3>{chatName}</h3>
         <p>{chatInfo[0]?.message.substring(0, 25) + " ...."}</p>
         <small>
-          {new Date(chatInfo[0]?.timestamp?.toDate()).toLocaleString()}
+          {moment(chatInfo[0]?.timestamp?.toDate())
+            .startOf(chatInfo[0]?.timestamp?.seconds)
+            .fromNow()}
+          {/* {new Date(chatInfo[0]?.timestamp?.toDate()).toLocaleString()} */}
         </small>
       </div>
     </div>
