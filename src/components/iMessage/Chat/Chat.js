@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Chat.css";
 import MicNoneIcon from "@material-ui/icons/MicNone";
 import { IconButton } from "@material-ui/core";
@@ -16,6 +16,15 @@ function Chat() {
   const chatName = useSelector(selectChatName);
   const chatId = useSelector(selectChatId);
   const [messages, setMessages] = useState([]);
+
+  const messagesEndRef = useRef();
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   useEffect(() => {
     if (chatId) {
@@ -47,6 +56,8 @@ function Chat() {
       email: user.email,
       displayName: user.displayName,
     });
+
+    scrollToBottom();
     setInput("");
   };
   return (
@@ -60,15 +71,18 @@ function Chat() {
       </div>
 
       {/* chat messages */}
+
       <div className="chat__messages">
         <FlipMove>
           {messages.map((message) => (
             <Message key={message.id} contents={message.data} />
           ))}
         </FlipMove>
+        <div ref={messagesEndRef} />
       </div>
 
       {/* chat input */}
+
       <div className="chat__input">
         <form>
           <input
@@ -83,6 +97,7 @@ function Chat() {
         <IconButton className="chat__mic">
           <MicNoneIcon />
         </IconButton>
+        <div />
       </div>
     </div>
   );

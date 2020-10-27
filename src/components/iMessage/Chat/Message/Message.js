@@ -21,6 +21,6 @@ const Message = forwardRef((props, ref) => {
       </small>
     </div>
   );
-}); 
+});
 
 export default Message;
