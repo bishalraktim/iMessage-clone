@@ -1,3 +1,10 @@
 .imessage {
   display: flex;
 }
+
+@media (max-width: 600px) {
+  .imessage {
+    flex-direction: column;
+  }
+}
+

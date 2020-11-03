@@ -41,6 +41,7 @@
   border: 1px solid lightgray;
   border-radius: 999px;
   padding: 5px;
+  font-size: 16px;
 }
 
 .chat__input > form > button {
@@ -62,4 +63,10 @@
 .chat__messages {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 345px) {
+  .chat {
+    min-width: 350px;
+  }
 }

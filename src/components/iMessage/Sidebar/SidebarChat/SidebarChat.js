@@ -29,7 +29,7 @@ function SidebarChat({ id, chatName }) {
       })
     );
   };
-
+ 
   return (
     <div className="sidebarChat" onClick={sidebarClicked}>
       <Avatar src={chatInfo[0]?.photo} />
@@ -47,4 +47,4 @@ function SidebarChat({ id, chatName }) {
   );
 }
 
-export default SidebarChat;
+export default SidebarChat;  

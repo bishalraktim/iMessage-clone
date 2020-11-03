@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Chat.css";
-import MicNoneIcon from "@material-ui/icons/MicNone";
+import SendIcon from "@material-ui/icons/Send";
 import { IconButton } from "@material-ui/core";
 import Message from "./Message/Message";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { selectChatName, selectChatId } from "../../../features/chatSlice";
 import dbs from "../../../Firebase/firebase";
 import firebase from "firebase/app";
 import { selectUser } from "../../../features/userSlice";
-import FlipMove from "react-flip-move";
+import FlipMove from "react-flip-move"; 
 
 function Chat() {
   const [input, setInput] = useState("");
@@ -60,6 +60,7 @@ function Chat() {
     scrollToBottom();
     setInput("");
   };
+
   return (
     <div className="chat">
       {/* chat header */}
@@ -71,7 +72,6 @@ function Chat() {
       </div>
 
       {/* chat messages */}
-
       <div className="chat__messages">
         <FlipMove>
           {messages.map((message) => (
@@ -82,9 +82,8 @@ function Chat() {
       </div>
 
       {/* chat input */}
-
       <div className="chat__input">
-        <form>
+        <form onSubmit={sendMessage}>
           <input
             type="text"
             placeholder="iMessage"
@@ -92,12 +91,15 @@ function Chat() {
             onChange={(e) => setInput(e.target.value)}
             disabled={!chatName}
           />
-          <button onClick={sendMessage}>Send Message</button>
+          {/* <button onClick={sendMessage}>Send Message</button> */}
         </form>
-        <IconButton className="chat__mic">
-          <MicNoneIcon />
+        <IconButton
+          className="chat__mic"
+          onClick={sendMessage}
+          disabled={!chatName}
+        >
+          <SendIcon />
         </IconButton>
-        <div />
       </div>
     </div>
   );
