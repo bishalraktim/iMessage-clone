@@ -8,7 +8,7 @@ import { selectChatName, selectChatId } from "../../../features/chatSlice";
 import dbs from "../../../Firebase/firebase";
 import firebase from "firebase/app";
 import { selectUser } from "../../../features/userSlice";
-import FlipMove from "react-flip-move"; 
+import FlipMove from "react-flip-move";  
 
 function Chat() {
   const [input, setInput] = useState("");

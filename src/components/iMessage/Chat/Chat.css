@@ -65,7 +65,7 @@
   scrollbar-width: none; /* Firefox */
 }
 
-@media (max-width: 345px) {
+@media (max-width: 340px) {
   .chat {
     min-width: 350px;
   }

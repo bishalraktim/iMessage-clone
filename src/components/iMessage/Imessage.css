@@ -4,7 +4,6 @@
 
 @media (max-width: 600px) {
   .imessage {
-    flex-direction: column;
+    flex-flow: column;
   }
 }
-
